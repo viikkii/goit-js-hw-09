@@ -1,7 +1,8 @@
-// Описан в документации
 import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+require("flatpickr/dist/themes/dark.css");
 
 const options = {
   enableTime: true,
