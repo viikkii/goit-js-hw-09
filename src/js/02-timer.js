@@ -7,14 +7,19 @@ import { start } from 'repl';
 require("flatpickr/dist/themes/dark.css");
 
 
-
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
-    console.log(selectedDates[0]);
+    onClose(selectedDates) {
+            const selectedDate = selectedDates[0].getTime()
+        if (selectedDate < new Date()) {
+            Notify.failure('Please choose a date in the future!');
+        } else {
+            refs.btnStart.removeAttribute("disabled");
+            console.log(selectedDates);
+        };
   },
 };
 
@@ -44,7 +49,7 @@ const timer = {
     }
 };
 
-// обращаемся к кнопке
+// обращаемся к кнопке и тегам
 const refs = {
     btnStart: document.querySelector('button[data-start]'),
     inputForm: document.querySelector('#datetime-picker'),
